@@ -1,45 +1,46 @@
-*{
-  
+* {
   font-family: Helvetica;
-  margin:0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   color: black;
 }
 
-html,body{
-  margin:0;
+body, html, #root {
+  margin: 0;
   padding: 0;
-  overflow: hidden;
-  height: 100vh;
-  width: 100vw;
-  background-color: #F4F9FF;
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden;
 }
-/* .wrapper {
-  max-width: 100vw;
-  max-height: 100vh;  
-  background-color: #F4F9FF;    
-} */
 
-.getDrext{
-  color:black;
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+
+.getDrext {
+  color: black;
   font-size: 32px;
   font-weight: bold;
   margin: 24px;
   align-items: left;
 }
 
-.TopBar{
+.TopBar {
   display: flex;
 }
-.links{
+
+.links {
   display: flex;
   align-items: center;
-  max-width: auto;
   gap: 64px;
   margin: 24px auto;
 }
 
-.links a{
+.links a {
   text-decoration: none;
   font-weight: 500;
   font-size: 24px;
@@ -47,18 +48,14 @@ html,body{
   transition: 200ms ease-in-out;
 }
 
-
 .links a:hover {
   text-decoration: underline;
-  
 }
 
-
-.CTA button{
+.CTA button {
   color: #ffffff;
   padding: 16px 20px;
-  font-size:20px;
-  text-wrap: nowrap;
+  font-size: 20px;
   background-color: black;
   border-radius: 25px;
   margin-right: 24px;
@@ -66,100 +63,48 @@ html,body{
   transition: 200ms ease-in;
 }
 
-.CTA button:hover{
-  color:black;
+.CTA button:hover {
+  color: black;
   background-color: white;
   transform: scale(1.05);
-  
 }
 
-.cardContainer {
-  height: 450px;
-  transform: scale(0.8);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 80px;
-  
-}
-
-.meCard{
-  align-self: center;
-  z-index: 2;
-  transition: 200ms ease-in-out;
-  
-}
-
-.meCard:hover{
-  transform: scale(1.10);
-  filter: drop-shadow(0 0 8px black);
-
-  
-}
-
-.aeCard{
-  transform: translateX(64px);
-  z-index: 0;
-  transition: 200ms ease-in-out;
-}
-
-
-.figmaCard{
-  transform: translateX(-64px);
-  z-index: 1;
-  transition: 200ms ease-in-out;
-}
-
-.footer{
-  width: 100vw;
+.footer {
+  width: 100%;
   background-color: black;
-  margin-bottom: 0;
-  min-height: 182px;
+  min-height: 200px;
   display: flex;
   justify-content: space-around;
 }
 
-.findMe{
+.findMe {
   padding-top: 40px;
 }
 
-
-.findMe h2,a{
-  color:white;
-}
-
-.contact{
-  padding-top: 40px;
-}
-
-.contact h2{
-  transform: translateX(105px);
+.findMe h2, .findMe a, .contact h2, .contact a {
   color: white;
+}
+
+.contact {
+  padding-top: 40px;
+  text-align: center;
+}
+
+.contact h2 {
   padding-bottom: 10px;
 }
 
-.profileLinks{
+.profileLinks {
   display: flex;
   flex-direction: column;
 }
 
-.profileLinks a{
+.profileLinks a {
   text-decoration: none;
   margin-top: 4px;
   padding: 8px;
-
 }
 
-.contact a{
-  text-decoration: none;
-}
-.contact a:hover{
+.contact a:hover, .findMe a:hover {
   color: grey;
-
 }
-
-.findMe a:hover{
-  color: grey;
-
-}
-

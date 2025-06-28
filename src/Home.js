@@ -1,44 +1,50 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import aeCard from './assets/aeCard.svg';
 import meCard from './assets/meCard.svg';
 import figmaCard from './assets/figmaCard.svg';
-import "./CardStack.css"
+import './CardStack.css';
+import Footer from './footer.js';
+
+const cards = [
+  { src: aeCard, alt: "AE Card" },
+  { src: meCard, alt: "Me Card" },
+  { src: figmaCard, alt: "Figma Card" }
+];
 
 const Home = () => {
-  const [isHovered, setIsHovered] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(1);
+
+  const rotateLeft = () => {
+    setCurrentIndex((prev) => (prev - 1 + cards.length) % cards.length);
+  };
+
+  const rotateRight = () => {
+    setCurrentIndex((prev) => (prev + 1) % cards.length);
+  };
+
+  const getCardPosition = (index) => {
+    const diff = index - currentIndex;
+    if (diff === 0) return "centerCard";
+    if (diff === -1 || diff === 2) return "leftCard";
+    if (diff === 1 || diff === -2) return "rightCard";
+    return "";
+  };
 
   return (
-    <><div className="stack">
-          <div className={`cardContainer ${isHovered ? 'hovering-center' : ''}`}>
-              <div className="card aeCard">
-                  <img src={aeCard} alt="AE Card" />
-              </div>
-
-              <div
-                  className="card meCard"
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-              >
-                  <img src={meCard} alt="Me Card" />
-              </div>
-
-              <div className="card figmaCard">
-                  <img src={figmaCard} alt="Figma Card" />
-              </div>
-          </div>
-      </div><div className="footer">
-              <div className="findMe">
-                  <h2>Find Me On</h2>
-                  <div className="profileLinks">
-                      <a href="https://www.linkedin.com/in/atharv-dhari-b66149288/">LinkedIn</a>
-                      <a href="https://www.instagram.com/atharvdhari004/">Instgram</a>
-                  </div>
-              </div>
-              <div className="contact">
-                  <h2>Contact</h2>
-                  <a href="mailto:atharvdhari217@gmail.com">atharvdhari217@gmail.com</a>
-              </div>
-          </div></>
+    <div className="stack">
+      <div className="cardCarouselWrapper">
+        <button className="navButton navLeft" onClick={rotateLeft}>⟵</button>
+        <div className="cardContainer">
+          {cards.map((card, index) => (
+            <div key={index} className={`card ${getCardPosition(index)}`}>
+              <img src={card.src} alt={card.alt} />
+            </div>
+          ))}
+        </div>
+        <button className="navButton navRight" onClick={rotateRight}>⟶</button>
+      </div>
+      <Footer />
+    </div>
   );
 };
 
